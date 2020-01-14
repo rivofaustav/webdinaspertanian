@@ -24,26 +24,32 @@
 				</div>
 				<?php endif; ?>
 
+				<!-- Card  -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/pengumuman/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+
+						<a href="<?php echo site_url('admin/pengumuman/') ?>"><i class="fas fa-arrow-left"></i>
+							Back</a>
 					</div>
 					<div class="card-body">
 
-						<form action="<?php echo site_url('admin/pengumuman/add') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?= site_url('admin/pengumuman/edit') ?>" method="post" enctype="multipart/form-data">
+
+							<input type="hidden" name="id" value="<?php echo $pengumuman->pengumuman_id?>" />
+
 							<div class="form-group">
 								<label for="judul">Judul*</label>
 								<input class="form-control <?php echo form_error('judul') ? 'is-invalid':'' ?>"
-								 type="text" name="judul" placeholder="judul pengumuman" />
+								 type="text" name="judul" placeholder="judul pengumuman" value="<?php echo $pengumuman->judul ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('judul') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="isi">Isi*</label>
+								<label for="isi">isi</label>
 								<input class="form-control <?php echo form_error('isi') ? 'is-invalid':'' ?>"
-								 type="text" name="isi" min="0" placeholder="isi pengumuman" />
+								 type="text" name="isi" min="0" placeholder="isi pengumuman" value="<?php echo $pengumuman->isi ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('isi') ?>
 								</div>
@@ -52,8 +58,9 @@
 
 							<!-- <div class="form-group">
 								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
+								<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
+								<input type="hidden" name="old_image" value="<?php echo $pengumuman->image ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('image') ?>
 								</div>
@@ -62,7 +69,7 @@
 							<div class="form-group">
 								<label for="name">Description*</label>
 								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-								 name="description" placeholder="pengumuman description..."></textarea>
+								 name="description" placeholder="pengumuman description..."><?php echo $pengumuman->description ?></textarea>
 								<div class="invalid-feedback">
 									<?php echo form_error('description') ?>
 								</div>
@@ -89,7 +96,6 @@
 
 		</div>
 		<!-- /#wrapper -->
-
 
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
