@@ -38,7 +38,7 @@ class Pengumuman_model extends CI_Model
     public function save()
     {
         $post = $this->input->post(); //ambil data dari form
-        $this->id_pengumuman = uniqid(); // membubat id unik
+        // $this->id_pengumuman = uniqid(); // membubat id unik
         $this->judul = $post["judul"]; // isi field judul
         $this->isi = $post["isi"]; // isi field isi
 
@@ -48,11 +48,11 @@ class Pengumuman_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id_pengumuman = $post["id"];
+        $this->id_pengumuman = $post["id_pengumuman"];
         $this->judul = $post["judul"];
         $this->isi = $post["isi"];
        
-        return $this->db->update($this->_table, $this, array('id_pengumuman' => $post['id']));
+        return $this->db->update($this->_table, $this, array('id_pengumuman' => $post['id_pengumuman']));
     }
 
     public function delete($id)

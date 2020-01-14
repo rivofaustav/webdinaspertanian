@@ -43,7 +43,7 @@
 							<div class="form-group">
 								<label for="isi">Isi*</label>
 								<input class="form-control <?php echo form_error('isi') ? 'is-invalid':'' ?>"
-								 type="text" name="isi" min="0" placeholder="isi pengumuman" />
+								 type="text" name="isi" placeholder="isi pengumuman" />
 								<div class="invalid-feedback">
 									<?php echo form_error('isi') ?>
 								</div>

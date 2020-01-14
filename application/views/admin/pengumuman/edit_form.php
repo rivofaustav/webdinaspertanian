@@ -47,9 +47,9 @@
 							</div>
 
 							<div class="form-group">
-								<label for="isi">isi</label>
+								<label for="isi">isi*</label>
 								<input class="form-control <?php echo form_error('isi') ? 'is-invalid':'' ?>"
-								 type="text" name="isi" min="0" placeholder="isi pengumuman" value="<?php echo $pengumuman->isi ?>" />
+								 type="text" name="isi" placeholder="isi pengumuman" value="<?php echo $pengumuman->isi ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('isi') ?>
 								</div>
@@ -64,9 +64,9 @@
 								<div class="invalid-feedback">
 									<?php echo form_error('image') ?>
 								</div>
-							</div>
+							</div> -->
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="name">Description*</label>
 								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
 								 name="description" placeholder="pengumuman description..."><?php echo $pengumuman->description ?></textarea>
