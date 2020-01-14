@@ -32,8 +32,8 @@
 										<th>Judul</th>
 										<th>Isi</th>
 										<!-- <th>Photo</th>
-										<th>Description</th>
-										<th>Action</th> -->
+										<th>Description</th> -->
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -47,14 +47,14 @@
 										</td>
 										<!-- <td>
 											<img src="<?php echo base_url('upload/pengumuman/'.$pengumuman->image) ?>" width="64" />
-										</td> -->
-										<!-- <td class="small">
+										</td>
+										<td class="small">
                                             <?php echo substr($pengumuman->description, 0, 120) ?>...
                                         </td> -->
 										<td width="250">
-											<a href="<?php echo site_url('admin/pengumuman/edit/'.$pengumuman->pengumuman_id) ?>"
+											<a href="<?php echo site_url('admin/pengumuman/edit/'.$pengumuman->id_pengumuman) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/pengumuman/delete/'.$pengumuman->pengumuman_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/pengumuman/delete/'.$pengumuman->id_pengumuman) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>

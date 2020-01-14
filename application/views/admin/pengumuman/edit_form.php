@@ -35,7 +35,7 @@
 
 						<form action="<?= site_url('admin/pengumuman/edit') ?>" method="post" enctype="multipart/form-data">
 
-							<input type="hidden" name="id" value="<?php echo $pengumuman->pengumuman_id?>" />
+							<input type="hidden" name="id" value="<?php echo $pengumuman->id_pengumuman?>" />
 
 							<div class="form-group">
 								<label for="judul">Judul*</label>
