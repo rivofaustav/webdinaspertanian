@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 $route['admin'] = 'admin/overview';
+$route['client'] = 'client/home';
 $route['pengumuman'] = 'admin/pengumuman/list';
 
 $route['404_override'] = '';
