@@ -1,13 +1,13 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Members extends CI_Controller {
+class Data_csv extends CI_Controller {
     
     function __construct() {
         parent::__construct();
         
-        // Load member model
-        $this->load->model('member');
+        // Load data_csv model
+        $this->load->model('data_csv');
         
         // Load form validation library
         $this->load->library('form_validation');
@@ -30,10 +30,10 @@ class Members extends CI_Controller {
         }
         
         // Get rows
-        $data['members'] = $this->member->getRows();
+        $data['data_csv'] = $this->data_csv->getRows();
         
         // Load the list page view
-        $this->load->view('members/index', $data);
+        $this->load->view('data_csv/index', $data);
     }
     
     public function import(){
@@ -76,19 +76,19 @@ class Members extends CI_Controller {
                         //         ),
                         //         'returnType' => 'count'
                         //     );
-                        //     $prevCount = $this->member->getRows($con);
+                        //     $prevCount = $this->data_csv->getRows($con);
                             
                         //     if($prevCount > 0){
-                        //         // Update member data
+                        //         // Update data_csv data
                         //         $condition = array('desa' => $row['Desa']);
-                        //         $update = $this->member->update($memData, $condition);
+                        //         $update = $this->data_csv->update($memData, $condition);
                                 
                         //         if($update){
                         //             $updateCount++;
                         //         }
                         //     }else{
-                        //         // Insert member data
-                        //         $insert = $this->member->insert($memData);
+                        //         // Insert data_csv data
+                        //         $insert = $this->data_csv->insert($memData);
                                 
                         //         if($insert){
                         //             $insertCount++;
@@ -98,7 +98,7 @@ class Members extends CI_Controller {
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'Members imported successfully. Total Rows ('.$rowCount.') | Inserted ('.$insertCount.') | Updated ('.$updateCount.') | Not Inserted ('.$notAddCount.')';
+                        $successMsg = 'data_csv imported successfully. Total Rows ('.$rowCount.') | Inserted ('.$insertCount.') | Updated ('.$updateCount.') | Not Inserted ('.$notAddCount.')';
                         $this->session->set_userdata('success_msg', $successMsg);
                     }
                 }else{
@@ -108,7 +108,7 @@ class Members extends CI_Controller {
                 $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
         }
-        redirect('members');
+        redirect('data_csv');
     }
     
     /*
