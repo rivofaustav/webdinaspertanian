@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pengumuman extends CI_Controller
+class Galeri extends CI_Controller
 {
     public function __construct()
     {
@@ -16,18 +16,18 @@ class Pengumuman extends CI_Controller
 
     public function index()
     {
-        $data["galeri"] = $this->pengumuman_model->getAll();
+        $data["galeri"] = $this->galeri_model->getAll();
         $this->load->view("admin/galeri/list", $data);
     }
 
     public function add()
     {
-        $pengumuman = $this->galeri_model; //objek model
+        $galeri = $this->galeri_model; //objek model
         $validation = $this->form_validation; // objek form validation
         $validation->set_rules($galeri->rules()); //terapkan rules
 
         if ($validation->run()) { //melakukan validasi
-            $pengumuman->save(); //simpan data ke database
+            $galeri->save(); //simpan data ke database
             $this->session->set_flashdata('success', 'Berhasil disimpan'); //tampilkan pesan berhasil
         }
 
@@ -38,17 +38,17 @@ class Pengumuman extends CI_Controller
     {
         if (!isset($id)) redirect('admin/galeri');
        
-        $pengumuman = $this->pengumuman_model;
+        $galeri = $this->galeri_model;
         $validation = $this->form_validation;
-        $validation->set_rules($pengumuman->rules());
+        $validation->set_rules($galeri->rules());
 
         if ($validation->run()) {
-            $pengumuman->update();
+            $galeri->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["pengumuman"] = $pengumuman->getById($id);
-        if (!$data["pengumuman"]) show_404();
+        $data["galeri"] = $galeri->getById($id);
+        if (!$data["galeri"]) show_404();
         
         $this->load->view("admin/galeri/edit_form", $data);
     }
