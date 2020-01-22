@@ -24,7 +24,7 @@
             <span>Galeri</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/galeri/add') ?>">Galeri</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/galeri/add') ?>">New Galeri</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/galeri') ?>">List Galeri</a>
         </div>
     </li>
