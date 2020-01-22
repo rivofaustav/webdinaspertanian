@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['admin'] = 'admin/overview';
 $route['client'] = 'client/home';
 $route['pengumuman'] = 'admin/pengumuman/list';
+$route['galeri'] = 'admin/galeri/list';
 
 $route['import'] = 'data_csvs/import';
 
