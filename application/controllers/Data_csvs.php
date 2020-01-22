@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Data_csv extends CI_Controller {
+class Data_csvs extends CI_Controller {
     
     function __construct() {
         parent::__construct();
@@ -30,10 +30,10 @@ class Data_csv extends CI_Controller {
         }
         
         // Get rows
-        $data['data_csv'] = $this->data_csv->getRows();
+        $data['data_csvs'] = $this->data_csv->getRows();
         
         // Load the list page view
-        $this->load->view('data_csv/index', $data);
+        $this->load->view('data_csvs/index', $data);
     }
     
     public function import(){
@@ -50,12 +50,12 @@ class Data_csv extends CI_Controller {
                 $insertCount = $updateCount = $rowCount = $notAddCount = 0;
                 
                 // If file uploaded
-                if(is_uploaded_file($_FILES['file']['tmp_nama'])){
+                if(is_uploaded_file($_FILES['file']['tmp_desa'])){
                     // Load CSV reader library
                     $this->load->library('CSVReader');
                     
                     // Parse data from CSV file
-                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_nama']);
+                    $csvData = $this->csvreader->parse_csv($_FILES['file']['tmp_desa']);
                     
                     // Insert/update CSV data into database
                     if(!empty($csvData)){
@@ -63,42 +63,42 @@ class Data_csv extends CI_Controller {
                             
                             // Prepare data for DB insertion
                             $memData = array(
-                                'nama' => $row['Nama'],
                                 'desa' => $row['Desa'],
+                                'nama' => $row['Nama'],
                                 'komoditas' => $row['Komoditas'],
                                 'status' => $row['Status'],
                             );
                             
-                        //     // Check whether desa already exists in the database
-                        //     $con = array(
-                        //         'where' => array(
-                        //             'desa' => $row['Desa']
-                        //         ),
-                        //         'returnType' => 'count'
-                        //     );
-                        //     $prevCount = $this->data_csv->getRows($con);
+                            // Check whether nama already exists in the database
+                            $con = array(
+                                'where' => array(
+                                    'nama' => $row['Nama']
+                                ),
+                                'returnType' => 'count'
+                            );
+                            $prevCount = $this->data_csv->getRows($con);
                             
-                        //     if($prevCount > 0){
-                        //         // Update data_csv data
-                        //         $condition = array('desa' => $row['Desa']);
-                        //         $update = $this->data_csv->update($memData, $condition);
+                            if($prevCount > 0){
+                                // Update data_csv data
+                                $condition = array('nama' => $row['Nama']);
+                                $update = $this->data_csv->update($memData, $condition);
                                 
-                        //         if($update){
-                        //             $updateCount++;
-                        //         }
-                        //     }else{
-                        //         // Insert data_csv data
-                        //         $insert = $this->data_csv->insert($memData);
+                                if($update){
+                                    $updateCount++;
+                                }
+                            }else{
+                                // Insert data_csv data
+                                $insert = $this->data_csv->insert($memData);
                                 
-                        //         if($insert){
-                        //             $insertCount++;
-                        //         }
-                        //     }
-                        // }
+                                if($insert){
+                                    $insertCount++;
+                                }
+                            }
+                        }
                         
                         // Status message with imported data count
                         $notAddCount = ($rowCount - ($insertCount + $updateCount));
-                        $successMsg = 'data_csv imported successfully. Total Rows ('.$rowCount.') | Inserted ('.$insertCount.') | Updated ('.$updateCount.') | Not Inserted ('.$notAddCount.')';
+                        $successMsg = 'data_csvs imported successfully. Total Rows ('.$rowCount.') | Inserted ('.$insertCount.') | Updated ('.$updateCount.') | Not Inserted ('.$notAddCount.')';
                         $this->session->set_userdata('success_msg', $successMsg);
                     }
                 }else{
@@ -108,7 +108,7 @@ class Data_csv extends CI_Controller {
                 $this->session->set_userdata('error_msg', 'Invalid file, please select only CSV file.');
             }
         }
-        redirect('data_csv');
+        redirect('data_csvs');
     }
     
     /*
@@ -116,9 +116,9 @@ class Data_csv extends CI_Controller {
      */
     public function file_check($str){
         $allowed_mime_types = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
-        if(isset($_FILES['file']['nama']) && $_FILES['file']['nama'] != ""){
-            $mime = get_mime_by_extension($_FILES['file']['nama']);
-            $fileAr = explode('.', $_FILES['file']['nama']);
+        if(isset($_FILES['file']['desa']) && $_FILES['file']['desa'] != ""){
+            $mime = get_mime_by_extension($_FILES['file']['desa']);
+            $fileAr = explode('.', $_FILES['file']['desa']);
             $ext = end($fileAr);
             if(($ext == 'csv') && in_array($mime, $allowed_mime_types)){
                 return true;

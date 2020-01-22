@@ -9,7 +9,7 @@ class Data_csv extends CI_Model{
     }
     
     /*
-     * Fetch data_csv data from the database
+     * Fetch members data from the database
      * @param array filter data based on the passed parameters
      */
     function getRows($params = array()){
@@ -47,7 +47,7 @@ class Data_csv extends CI_Model{
     }
     
     /*
-     * Insert data_csv data into the database
+     * Insert members data into the database
      * @param $data data to be insert based on the passed parameters
      */
     public function insert($data = array()) {
@@ -60,7 +60,7 @@ class Data_csv extends CI_Model{
                 $data['modified'] = date("Y-m-d H:i:s");
             }
             
-            // Insert data_csv data
+            // Insert member data
             $insert = $this->db->insert($this->table, $data);
             
             // Return the status
@@ -70,7 +70,7 @@ class Data_csv extends CI_Model{
     }
     
     /*
-     * Update data_csv data into the database
+     * Update member data into the database
      * @param $data array to be update based on the passed parameters
      * @param $condition array filter data
      */
@@ -81,7 +81,7 @@ class Data_csv extends CI_Model{
                 $data['modified'] = date("Y-m-d H:i:s");
             }
             
-            // Update data_csv data
+            // Update member data
             $update = $this->db->update($this->table, $data, $condition);
             
             // Return the status

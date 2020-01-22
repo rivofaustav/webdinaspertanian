@@ -12,13 +12,14 @@
 </head>
 <body>
 <div class="container">
-    <h2>dataList</h2>
+    <h2>data_csvs List</h2>
 	
     <!-- Display status message -->
     <?php if(!empty($success_msg)){ ?>
     <div class="col-xs-12">
         <div class="alert alert-success"><?php echo $success_msg; ?></div>
     </div>
+    <?php } ?>
     <?php if(!empty($error_msg)){ ?>
     <div class="col-xs-12">
         <div class="alert alert-danger"><?php echo $error_msg; ?></div>
@@ -35,7 +36,7 @@
 		
         <!-- File upload form -->
         <div class="col-md-12" id="importFrm" style="display: none;">
-            <form action="<?php echo base_url('data_csv/import'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('data_csvs/import'); ?>" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
             </form>
@@ -46,23 +47,23 @@
             <thead class="thead-dark">
                 <tr>
                     <th>#ID</th>
-                    <th>Nama</th>
                     <th>Desa</th>
+                    <th>Nama</th>
                     <th>Komoditas</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($data_csv)){ foreach($data_csv as $row){ ?>
+                <?php if(!empty($data_csvs)){ foreach($data_csvs as $row){ ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['nama']; ?></td>
                     <td><?php echo $row['desa']; ?></td>
+                    <td><?php echo $row['nama']; ?></td>
                     <td><?php echo $row['komoditas']; ?></td>
                     <td><?php echo $row['status']; ?></td>
                 </tr>
                 <?php } }else{ ?>
-                <tr><td colspan="5">No data(s) found...</td></tr>
+                <tr><td colspan="5">No member(s) found...</td></tr>
                 <?php } ?>
             </tbody>
         </table>

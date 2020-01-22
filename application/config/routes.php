@@ -54,5 +54,8 @@ $route['admin'] = 'admin/overview';
 $route['client'] = 'client/home';
 $route['pengumuman'] = 'admin/pengumuman/list';
 
+$route['import'] = 'data_csvs/import';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
