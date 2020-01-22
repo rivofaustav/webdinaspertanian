@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-sm-12">
 						
-        <h1>Dinas Pertanian Pemerintah Kota Batu</h1>
+        <h1>Dinas Pertanian Pemerintah Kota Batu Indonesia</h1>
     </div> <!-- col -->					
 </div> <!-- //row -->
 
